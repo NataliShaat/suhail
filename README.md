@@ -1,126 +1,137 @@
-# Suhail (سُهَيْل · 苏海尔) — Riyadh hotel downtowns (hackathon prototype)
+# Suhail (سُهَيْل)
 
-Every hotel becomes the heart of its own downtown, explored like a game map. Rafeeq books a licensed local guide by the hour, and Suhail, the star assistant (Suhail is the Arabic name of Canopus, the star that guided desert travellers), answers questions about the downtowns. Arabic, English and Chinese (Simplified), all local data. The only key is the Anthropic one, and it stays on the server.
+Explore your hotel's neighbourhood in Riyadh like a game map.
 
-## Run it
+Suhail is a tourism app prototype built for a Saudi tourism hackathon. Each hotel becomes the centre of its own themed "downtown", shown as a game-style island map. Its nearby places sit on islands around the hotel, and each stop turns green once you check in.
+
+## Features
+
+- **Three downtowns, one per hotel**
+  - **The Old Capital**: Ramada by Wyndham Riyadh, King Fahd Road
+  - **The Heritage Village**: Bab Samhan, a Luxury Collection Hotel, Diriyah
+  - **The Skyline District**: Comfort Hotel Riyadh Olaya
+- **Game-map downtowns.** A 3D city overview flies into each downtown. Places are linked by a dotted route, nearby metro stations are marked, and a progress bar tracks your visits. Checking in to a place turns it green, with a checkmark.
+- **Bonus zone.** In The Heritage Village, JAX District unlocks once every heritage place on the main route is checked in.
+- **Book a guide (Rafeeq).** Book a local tour guide by the hour. Filter by downtown and language, pick a duration and confirm.
+- **Suhail AI assistant.** The gold star button beside "Book a guide" opens a chat. It answers questions about the downtowns, their places, opening hours, metro access and guides. Replies stream in, with suggestions that fit the screen you're on.
+- **Three languages.** English, Arabic (full right-to-left layout, including the map) and Chinese (Simplified). Switch anytime from the language bar at the top.
+
+## Tech stack
+
+| Area | Packages |
+|---|---|
+| UI | React 19, TypeScript |
+| Build and dev server | Vite 8, @vitejs/plugin-react |
+| 3D scene | three, @react-three/fiber, @react-three/drei |
+| Animation | framer-motion |
+| State | zustand (progress and bookings are saved in the browser) |
+| Languages | i18next, react-i18next |
+| Icons | lucide-react |
+| AI assistant | @anthropic-ai/sdk (Anthropic Messages API, streaming) |
+
+## Getting started
+
+### Requirements
+
+- Node.js and npm. `package.json` does not pin a Node version. The project was built with Node 24; Vite 8 needs Node 20.19 or newer.
+- An Anthropic API key, only if you want the assistant to reply.
+
+### Steps
 
 ```bash
+git clone https://github.com/NataliShaat/suhail.git
+cd suhail
 npm install
-npm run dev        # http://localhost:5173
-npm run build      # production build in dist/ (relative paths, any static host)
-npm run preview
+cp .env.example .env      # on Windows PowerShell: Copy-Item .env.example .env
 ```
 
-On a laptop the app sits in a phone frame (390×844, scaled to fit). On a phone it fills the screen.
+Open `.env` and paste your key after `ANTHROPIC_API_KEY=`. Then start the app:
 
-## Suhail, the star assistant
+```bash
+npm run dev
+```
 
-The star button beside **Book a guide** opens a chat. Replies stream from the Anthropic Messages API through a server endpoint, `POST /api/chat`, which holds the key. The app never sees it.
+Open http://localhost:5173. On a laptop the app sits in a phone-sized frame; on a phone it fills the screen.
 
-| Where | How the key is read |
-|---|---|
-| `npm run dev` / `npm run preview` | Vite middleware (`server/devApi.ts`) reads `ANTHROPIC_API_KEY` from the project's `.env` on every request (no restart needed). Keys set elsewhere on the machine are ignored. |
-| Vercel | `api/chat.ts` reads `process.env.ANTHROPIC_API_KEY`. Add it under Project → Settings → Environment Variables, then redeploy. |
+### Environment variables
 
-1. `cp .env.example .env` and paste the key after `ANTHROPIC_API_KEY=`. `ANTHROPIC_MODEL` defaults to `claude-sonnet-5-5`.
-2. Without a key the chat says "Suhail isn't connected yet" and offers a guide instead.
-3. **Static hosting (GitHub Pages):** build with `VITE_CHAT_API_URL=https://<project>.vercel.app/api/chat npm run build`. The function allows any `https://*.github.io` origin by default; set `CHAT_ALLOWED_ORIGINS` (comma-separated, `*.` wildcards) on Vercel to narrow it.
-
-The system prompt is built from the app's data (`src/assistant/knowledge.ts`): every downtown, place, metro station and guide, with names in all three languages, plus each request's context (language, current downtown or picker, places checked in, Riyadh time and what is open now). Handler: `server/chat.ts`. Chat UI: `src/screens/SuhailChat.tsx`. Deep link: `?suhail=1`.
-
-## Demo flow (under two minutes)
-
-1. The app opens in English. The language bar at the top of every screen (English | العربية | 中文) switches instantly, keeps progress, and mirrors the whole layout in Arabic.
-2. Tap a hotel (the island or its label). The camera leans in, the sheet opens.
-3. **I'm staying here**: the camera glides in and turns to face the hotel. Its island grows to span the screen and rests just above **Book a guide**, while the places rise behind it and the route draws itself.
-4. Tap two or three places and press **Check in**: green check, solid route, progress bar, and the gold marker hops to the place.
-5. **Book a guide** (on the city screen too): filter by downtown and by **中文**, pick a guide, choose **3 h**, **Confirm booking**.
-
-### Rehearsal shortcuts (deep links)
-
-| Link | Opens |
-|---|---|
-| `?fresh=1` | English, progress cleared |
-| `?lang=zh-CN` | Chinese |
-| `?dt=ramada` | Straight into a downtown (`ramada`, `bab-samhan`, `comfort-olaya`) |
-| `?dt=ramada&visited=illume,marthad` | With those places already checked in |
-| `?dt=ramada&rafeeq=1&guide=lin` | Rafeeq with a booking sheet open |
-| `?visited=` | Clears check-ins |
-| `?dt=ramada&suhail=1` | The Suhail chat, inside a downtown |
-
-Settings also has **Reset all check-ins and bookings**.
-
-## Where things live
-
-| Change | File |
-|---|---|
-| App name | `app.name` in each `src/i18n/*.json`; Latin fallback `APP_NAME` in `src/config.ts`; `index.html`, `public/manifest.webmanifest` |
-| Colours, fly-in duration, RTL map mirroring | `src/config.ts` |
-| Hotels, places, routes, metro, opening hours, highlights | `src/data/downtowns.json` |
-| Guides | `src/data/guides.json` |
-| Every string, including place names | `src/i18n/en.json`, `ar.json`, `zh-CN.json` |
-| Map projection (lat/lng → order around the hotel) | `src/data/geo.ts` |
-| Downtown framing (camera tilt, hotel size, island placement, label spacing) | `src/three/frameDowntown.ts` |
-| Suhail assistant (prompt, endpoint, chat) | `src/assistant/`, `server/`, `api/chat.ts`, `src/screens/SuhailChat.tsx` |
-| 3D scene, hotels, islands | `src/three/` |
-| Screens | `src/screens/` |
-
-### Swapping a hotel for a GLB model
-
-Drop the file in `public/models/` and set the hotel's `model` in `downtowns.json`, for example `"model": "./models/ramada.glb"`. It is scaled to the procedural building's height and placed on the island. If it fails to load, the procedural hotel stays. No scene code changes.
-
-## Decisions to review
-
-- **Downtown framing.** The camera looks down at about 50°. The hotel faces the viewer; its island spans about 80% of the screen width and rests 16px above **Book a guide**. Each place's box covers its badge and the island under it, islands keep open ground between them, and when they can't all fit the camera steps back a little at a time until they do. Framings are cached per screen size and language, and composed in the background while a hotel's sheet is open. Places keep their real order around the hotel (turned so the emptiest direction faces the viewer) and their near-to-far order, then are placed on screen in the space above the hotel: no label touches an edge, overlaps another label or sits on the hotel building, and every island stands behind the hotel. Their 3D positions are worked back from the screen, so the map is stylised, not to scale.
-- **No metro in Diriyah**: a "No metro yet / Ride with a Rafeeq" chip stands where a station would, and opens the guide list.
-- **Guides by downtown**: each guide covers one or two downtowns (`downtowns` in `guides.json`). Opened from the city, the list shows every guide with a downtown filter; inside a downtown it starts on that downtown's guides.
-- **JAX District** is drawn among the Bab Samhan places; the copy states its real distance ("3.5 km west"). It unlocks when every heritage place on the main route is checked in. Before that, its places show a lock and offer "Go with a Rafeeq".
-- **Arabic mirrors the map** left to right, as the brief asks for the path direction. Set `MIRROR_MAP_IN_RTL = false` to keep east on the right in every language.
-- **Metro stations** are not counted in "x of 8 places". They open an info sheet with the line and distance.
-- **Numbers in Arabic** use Latin digits and the Gregorian calendar (`ar-SA-u-nu-latn-ca-gregory`), matching "120 ريال".
-- **Fonts** load per language: Montserrat always, IBM Plex Sans Arabic and Noto Sans SC only when that script is on screen.
-
-## Placeholders and sample data to replace
-
-- **Opening hours and highlights are sample values** (each place lists them in `"prototype"` in `downtowns.json`; see the `_comment` at the top).
-- **Guides are fictional**: names, ratings, hourly rates (110–220 SAR) and availability in `guides.json`.
-- Booking references (`RFQ-XXXXXX`) are random; nothing is sent anywhere.
-- Short place descriptions were written from the brief. Where the brief gave none (for example the cafés), they say only what the place is.
-
-## Names to check
-
-**Chinese.** Clear transliterations or translations where no established name was certain:
-
-| English | Chinese used | Note |
+| Variable | Required | What it does |
 |---|---|---|
-| Ramada by Wyndham | 华美达 | Wyndham's brand name in China |
-| Comfort Hotel | 凯富 | Choice Hotels' Chinese brand name; please confirm |
-| Luxury Collection | 豪华精选 | Marriott's Chinese brand name |
-| Bab Samhan | 巴布萨姆汉 | transliteration |
-| Diriyah | 德拉伊耶 | also seen as 迪里耶 |
-| Olaya | 奥拉亚 | transliteration |
-| Murabba Palace / station | 穆拉巴宫 / 穆拉巴站 | transliteration |
-| King Abdulaziz Darah | 阿卜杜勒阿齐兹国王档案馆 | descriptive (the Darah is the archive foundation) |
-| Al Masmak | 马斯马克堡博物馆 | common form |
-| Souq Al Zal | 扎尔市场 | transliteration |
-| Al-Afrah | 阿夫拉赫餐厅 | transliteration |
-| Al Taif Kitchens | 塔伊夫厨房 | translation |
-| Museum of Bygone Years | 往昔博物馆 | translation |
-| Bujairi Terrace | 布贾伊里露台 | transliteration |
-| Salwa Palace | 萨尔瓦宫 | transliteration |
-| At-Turaif | 图赖夫 | from the brief |
-| Kingdom Centre | 王国中心 | common form |
-| Al Faisaliah | 费萨利亚塔 | common form |
-| Passport Department / Al Urubah stations | 护照局站 / 乌鲁巴站 | not checked against Riyadh Metro's Chinese signage |
-| Blue Line | 蓝线 | |
-| Brand names | Marthad, illume, Maiz, Cova, The Warehouse, Bohemia, JAX 01, Al Mamlaka, MORFi, GOAT by REEHAM, The Gate | kept in Latin letters with a Chinese descriptor |
-| Guide names | all eight | transliterated |
+| `ANTHROPIC_API_KEY` | For the assistant | Your Anthropic API key. |
+| `ANTHROPIC_MODEL` | No | The model the assistant uses. Defaults to `claude-sonnet-5-5`. |
+| `CHAT_ALLOWED_ORIGINS` | No | Other sites allowed to call `/api/chat` (comma-separated, `*.` wildcards). Defaults to any `https://*.github.io` site and localhost. |
+| `VITE_CHAT_API_URL` | No | Set at build time when the app is hosted separately from the API, for example `https://your-project.vercel.app/api/chat`. Defaults to `/api/chat`. |
 
-**Arabic.** Worth a native check: متحف الزمن الماضي (Museum of Bygone Years), ذا ويرهاوس, المملكة سوشال داينينغ, ذا روف في المملكة, ذا قيت للقهوة المختصة, مورفي, جوت باي ريهام, كوفا باستيتشيريا, مقهى ومحمصة إليوم, the metro station names الجوازات / المربع / العروبة, and the hotel name باب سمحان، فندق ذا لاكشري كوليكشن.
+The API key stays on the server. The browser never receives it: it's read by the dev server middleware (`server/devApi.ts`) or by the Vercel function (`api/chat.ts`). `.env` is listed in `.gitignore`. Never commit it, and never put the key in frontend code.
+
+The dev server reads `.env` on every chat message, so you don't need to restart after adding the key.
+
+### Without a key
+
+The app runs fully without a key. The map, check-ins, guide booking and languages all work. Only the assistant is affected: it shows a "Suhail isn't connected yet" message and offers to book a guide instead.
+
+## Scripts
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Starts the Vite dev server on port 5173, with the `/api/chat` endpoint. |
+| `npm run build` | Type-checks the app and the server code, then builds the production site into `dist/`. |
+| `npm run preview` | Serves the production build locally, with the `/api/chat` endpoint. |
+| `npm run typecheck` | Type-checks the app and the server code without building. |
+
+## Project structure
+
+```
+api/
+  chat.ts              Vercel serverless function for POST /api/chat
+server/
+  chat.ts              Chat handler shared by Vercel and the dev server (CORS, streaming)
+  devApi.ts            Vite plugin: serves /api/chat locally and reads .env
+public/                Logo, web app manifest
+src/
+  App.tsx              Root layout: 3D scene plus screens
+  config.ts            App name, colours, district themes, animation settings
+  store.ts             App state: view, language, check-ins, bookings
+  assistant/           Suhail's knowledge (system prompt) and chat client
+  data/                Downtowns, places, guides, opening hours, map layout
+  i18n/                English, Arabic and Chinese text
+  screens/             City overview, downtown map, place sheet, Rafeeq, booking, settings, chat
+  three/               3D scene: islands, hotels, camera framing
+  ui/                  Shared components: sheet, language bar, icons, phone frame
+index.html
+vite.config.ts
+vercel.json            Function settings for api/chat.ts
+.env.example           Template for .env
+```
+
+## Deployment
+
+The project is set up for Vercel. `vercel.json` configures the `api/chat.ts` function, with a 60-second limit for streamed replies.
+
+1. Import the GitHub repository in Vercel. It detects Vite, builds with `npm run build` and serves `dist/`.
+2. In Project → Settings → Environment Variables, add `ANTHROPIC_API_KEY`. Optionally add `ANTHROPIC_MODEL` and `CHAT_ALLOWED_ORIGINS`.
+3. Redeploy so the new variables take effect.
+
+### Static hosting (for example, GitHub Pages)
+
+The build uses relative paths, so `dist/` runs from any static host. A static host can't run the chat endpoint, so deploy the API to Vercel and point the build at it:
+
+```bash
+VITE_CHAT_API_URL=https://your-project.vercel.app/api/chat npm run build
+```
+
+On Vercel, set `CHAT_ALLOWED_ORIGINS` to your own site (for example `https://your-name.github.io`) so other sites can't use the endpoint. It's also worth setting a spend limit in the Anthropic Console.
 
 ## Notes
 
-- No emojis. Icons are Lucide outline icons; directional ones (back, arrows) flip in Arabic, the others do not.
-- `prefers-reduced-motion`: the fly-in becomes a short cut, the islands appear in place, and there is no drift, twinkle or traffic pulse.
-- The Saudi Tourism Authority palette is used for colour only. The logo is `public/logo.png` (also the tab icon); the crenellation motif was drawn for this app.
-- Target 60 fps: pixel ratio capped at 1.75, one shadow-casting light, instanced windows and crenellations. Measured at 60 fps on an Intel Iris Xe laptop GPU.
+- **Sample data.** Some place descriptions, highlights and all opening hours are sample prototype data. Each place lists its sample fields under `"prototype"` in `src/data/downtowns.json`.
+- **Fictional guides.** Guide names, ratings, hourly rates and availability in `src/data/guides.json` are made up.
+- **No real bookings.** Bookings are saved only in the browser, and booking references are random. Nothing is sent anywhere.
+
+## Team
+
+| Name | Role |
+|---|---|
+| [Name] | [Role] |
+| [Name] | [Role] |
+| [Name] | [Role] |
