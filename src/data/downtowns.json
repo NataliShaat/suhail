@@ -1,0 +1,196 @@
+{
+  "_comment": "PROTOTYPE DATA: every field a place lists in its \"prototype\" array (opening hours, highlights) holds realistic sample values written for the demo, not checked with the venue. Replace before launch. Hours are 24 h Riyadh time; \"days\" overrides the daily window by weekday (0 = Sunday ... 6 = Saturday), null means closed that day, and a close time earlier than the open time runs past midnight.",
+  "downtowns": [
+    {
+      "id": "ramada",
+      "theme": "oldcity",
+      "hotel": { "lat": 24.66025, "lng": 46.70037, "kind": "ramada", "model": null },
+      "route": ["illume", "al-taif-kitchens", "marthad", "al-afrah", "national-museum", "murabba-palace", "darah", "masmak"],
+      "places": [
+        {
+          "id": "national-museum", "category": "heritage", "lat": 24.64810, "lng": 46.71095, "free": true,
+          "hours": { "open": "09:00", "close": "20:00", "days": { "5": ["16:00", "21:00"] } },
+          "highlights": ["Eight galleries from prehistory to the founding of the Kingdom", "Life-size Hejaz Railway carriage", "Gardens of King Abdulaziz Historical Centre"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "murabba-palace", "category": "heritage", "lat": 24.64655, "lng": 46.70917, "free": true,
+          "hours": { "open": "08:00", "close": "20:00", "days": { "5": ["16:00", "20:00"] } },
+          "highlights": ["King Abdulaziz's 1930s mud-brick court", "Vintage royal cars in the courtyard", "Carved palm-trunk ceilings"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "darah", "category": "heritage", "lat": 24.64651, "lng": 46.70931,
+          "hours": { "open": "08:00", "close": "15:00", "days": { "5": null, "6": null } },
+          "highlights": ["Manuscripts, maps and early photographs of the Kingdom", "Reading room open to visitors", "Next door to Murabba Palace"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "masmak", "category": "heritage", "lat": 24.63121, "lng": 46.71338, "final": true,
+          "hours": { "open": "08:00", "close": "21:00", "days": { "5": ["16:00", "21:00"] } },
+          "highlights": ["The palm-wood gate from the 1902 recapture of Riyadh", "Watchtowers and a central courtyard", "Souq Al Zal antiques and carpets next door"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "al-afrah", "category": "food", "lat": 24.65049, "lng": 46.70601,
+          "hours": { "open": "05:30", "close": "12:00" },
+          "highlights": ["Mutabbaq and foul for breakfast", "Fresh tamees bread from the oven", "Cardamom tea"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "al-taif-kitchens", "category": "food", "lat": 24.66838, "lng": 46.70917,
+          "hours": { "open": "11:00", "close": "01:00" },
+          "highlights": ["Lamb and chicken mandi from the pit oven", "Family seating on floor cushions", "Generous shared platters"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "marthad", "category": "coffee", "lat": 24.65998, "lng": 46.70431,
+          "hours": { "open": "06:00", "close": "00:00" },
+          "highlights": ["Single-origin pour-overs", "Saudi coffee with dates", "Five minutes on foot from the hotel"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "illume", "category": "coffee", "lat": 24.66764, "lng": 46.70134,
+          "hours": { "open": "07:00", "close": "01:00" },
+          "highlights": ["Beans roasted on site", "Bright room for working", "Pastries baked each morning"],
+          "prototype": ["hours", "highlights"]
+        }
+      ],
+      "metro": [
+        { "id": "passport-dept", "line": "blue", "lat": 24.65947, "lng": 46.70464 },
+        { "id": "al-murabba-station", "line": "blue", "lat": 24.66461, "lng": 46.70219 }
+      ]
+    },
+    {
+      "id": "bab-samhan",
+      "theme": "heritage",
+      "hotel": { "lat": 24.73988, "lng": 46.57228, "kind": "babsamhan", "model": null },
+      "route": ["bygone-years", "bujairi-terrace", "maiz", "cova", "turaif-viewpoint", "diriyah-museum", "at-turaif"],
+      "places": [
+        {
+          "id": "bygone-years", "category": "heritage", "lat": 24.74133, "lng": 46.57180,
+          "hours": { "open": "16:00", "close": "23:00" },
+          "highlights": ["A family house kept with its old furniture", "Coffee pots, radios and household tools", "Right beside the hotel"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "bujairi-terrace", "category": "food", "lat": 24.73732, "lng": 46.57480,
+          "hours": { "open": "08:00", "close": "00:00", "days": { "4": ["08:00", "01:00"], "5": ["08:00", "01:00"] } },
+          "highlights": ["Terrace tables facing At-Turaif", "Around twenty restaurants and cafés", "Best at sunset, when the walls light up"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "at-turaif", "category": "heritage", "lat": 24.73361, "lng": 46.57465, "final": true, "evening": true,
+          "hours": { "open": "16:00", "close": "00:00" },
+          "highlights": ["Mud-brick palaces of the first Saudi state", "UNESCO World Heritage Site", "Evening light show on the walls"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "diriyah-museum", "category": "heritage", "lat": 24.73380, "lng": 46.57513,
+          "hours": { "open": "16:00", "close": "00:00" },
+          "highlights": ["Inside Salwa Palace", "Models of Diriyah in the 18th century", "Weapons, coins and daily life"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "turaif-viewpoint", "category": "landmark", "lat": 24.73567, "lng": 46.57710,
+          "hours": { "open": "16:00", "close": "00:00" },
+          "highlights": ["The classic photo over At-Turaif", "Wadi Hanifah palms below", "Quiet just after sunset"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "maiz", "category": "food", "lat": 24.73681, "lng": 46.57413,
+          "hours": { "open": "13:00", "close": "00:00" },
+          "highlights": ["Modern Saudi tasting menu", "Jareesh and kabsa, reimagined", "Book ahead for a terrace table"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "cova", "category": "coffee", "lat": 24.73656, "lng": 46.57532,
+          "hours": { "open": "08:00", "close": "00:00" },
+          "highlights": ["Milanese pastries and panettone", "Espresso at the counter", "A pause between Bujairi and At-Turaif"],
+          "prototype": ["hours", "highlights"]
+        }
+      ],
+      "bonus": {
+        "id": "jax",
+        "theme": "nightlife",
+        "unlockAfterCategory": "heritage",
+        "route": ["jax-01", "the-warehouse", "bohemia"],
+        "places": [
+          {
+            "id": "the-warehouse", "category": "music", "lat": 24.74506, "lng": 46.53803,
+            "hours": { "open": "20:00", "close": "02:00", "days": { "0": null, "1": null, "2": null } },
+            "highlights": ["Live bands and DJ nights", "Local and touring acts", "Doors open around 8 pm"],
+            "prototype": ["hours", "highlights"]
+          },
+          {
+            "id": "bohemia", "category": "music", "lat": 24.74513, "lng": 46.53790, "alsoCoffee": true,
+            "hours": { "open": "10:00", "close": "01:00" },
+            "highlights": ["Vinyl crates and listening booths", "Coffee bar inside the record shop", "Small sets on weekend evenings"],
+            "prototype": ["hours", "highlights"]
+          },
+          {
+            "id": "jax-01", "category": "music", "lat": 24.74741, "lng": 46.53869,
+            "hours": { "open": "10:00", "close": "22:00", "days": { "5": ["14:00", "22:00"] } },
+            "highlights": ["Rotating exhibitions of Saudi artists", "Studios you can peek into", "Free entry"],
+            "prototype": ["hours", "highlights"]
+          }
+        ]
+      },
+      "metro": [],
+      "noMetroHint": true
+    },
+    {
+      "id": "comfort-olaya",
+      "theme": "modern",
+      "hotel": { "lat": 24.70695, "lng": 46.67713, "kind": "comfort", "model": null },
+      "route": ["morfi", "goat", "al-faisaliah", "the-gate", "mamlaka-social", "the-roof", "sky-bridge"],
+      "places": [
+        {
+          "id": "sky-bridge", "category": "landmark", "lat": 24.71129, "lng": 46.67446, "final": true,
+          "hours": { "open": "10:00", "close": "23:00", "days": { "5": ["14:00", "23:00"] } },
+          "highlights": ["300 m above the city", "Express lifts up Kingdom Centre", "Night view of King Fahd Road"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "mamlaka-social", "category": "food", "lat": 24.71148, "lng": 46.67447,
+          "hours": { "open": "12:00", "close": "01:00" },
+          "highlights": ["Many kitchens under one roof", "Saudi, Asian and Italian counters", "Good for groups who can't agree"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "the-roof", "category": "food", "lat": 24.71140, "lng": 46.67443,
+          "hours": { "open": "17:00", "close": "01:00" },
+          "highlights": ["Open-air dining on the roof", "Grills and mezze", "Skyline views at dinner"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "al-faisaliah", "category": "landmark", "lat": 24.69021, "lng": 46.68514,
+          "hours": { "open": "10:00", "close": "23:00", "days": { "5": ["16:00", "23:00"] } },
+          "highlights": ["Observation deck in the golden globe", "Riyadh's first skyscraper, 1990s", "Mall and restaurants below"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "morfi", "category": "coffee", "lat": 24.70653, "lng": 46.67926,
+          "hours": { "open": "06:00", "close": "02:00" },
+          "highlights": ["Next door to the hotel", "Iced Spanish latte", "Open late"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "goat", "category": "coffee", "lat": 24.70761, "lng": 46.67876,
+          "hours": { "open": "07:00", "close": "00:00" },
+          "highlights": ["Signature desserts by Reeham", "Small, design-led room", "Two minutes from the hotel"],
+          "prototype": ["hours", "highlights"]
+        },
+        {
+          "id": "the-gate", "category": "coffee", "lat": 24.71462, "lng": 46.67402,
+          "hours": { "open": "06:00", "close": "01:00" },
+          "highlights": ["Specialty roasts by Kingdom Centre", "Quick stop before the Sky Bridge", "Outdoor seats in the evening"],
+          "prototype": ["hours", "highlights"]
+        }
+      ],
+      "metro": [
+        { "id": "al-urubah-station", "line": "blue", "lat": 24.71347, "lng": 46.67518 }
+      ]
+    }
+  ]
+}

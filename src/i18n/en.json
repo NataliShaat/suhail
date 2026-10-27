@@ -1,0 +1,297 @@
+{
+  "app": {
+    "name": "Suhail"
+  },
+  "common": {
+    "back": "Back",
+    "close": "Close",
+    "settings": "Settings",
+    "language": "Language",
+    "continue": "Continue"
+  },
+  "city": {
+    "title": "Riyadh",
+    "subtitle": "Three hotels, three downtowns. Tap the one you're staying at.",
+    "placesCount_one": "{{count}} place to explore",
+    "placesCount_other": "{{count}} places to explore",
+    "stayHere": "I'm staying here",
+    "openHotel": "Open {{name}}",
+    "visitedSoFar": "{{done}} of {{total}} visited"
+  },
+  "downtowns": {
+    "ramada": {
+      "name": "The Old Capital",
+      "hotel": "Ramada by Wyndham Riyadh, King Fahd Road",
+      "hotelShort": "Ramada King Fahd Road",
+      "vibe": "A 24-floor tower on King Fahd Road, a short ride from the palaces of old Riyadh."
+    },
+    "bab-samhan": {
+      "name": "The Heritage Village",
+      "hotel": "Bab Samhan, a Luxury Collection Hotel, Diriyah",
+      "hotelShort": "Bab Samhan, Diriyah",
+      "vibe": "Mud-brick courtyards in Diriyah, a walk away from At-Turaif."
+    },
+    "comfort-olaya": {
+      "name": "The Skyline District",
+      "hotel": "Comfort Hotel Riyadh Olaya",
+      "hotelShort": "Comfort Olaya",
+      "vibe": "Glass and stone in Olaya, in the shadow of Kingdom Centre."
+    }
+  },
+  "categories": {
+    "all": "All",
+    "heritage": "Heritage",
+    "food": "Food",
+    "coffee": "Coffee",
+    "music": "Music and art",
+    "landmark": "Landmarks",
+    "metro": "Metro"
+  },
+  "map": {
+    "progress": "{{done}} of {{total}} places",
+    "progressLabel": "Places visited",
+    "backToCity": "Back to the city",
+    "finalStop": "Final stop",
+    "home": "Your hotel",
+    "bonusZone": "Bonus zone",
+    "bonusLocked": "Check in at every heritage place to unlock",
+    "bonusUnlocked": "Unlocked. 3.5 km west, by car or with a Rafeeq",
+    "filtersLabel": "Filter places",
+    "emptyFilter": "No {{category}} in this downtown. Try another filter.",
+    "bookGuide": "Book a guide",
+    "noMetroTitle": "No metro yet",
+    "noMetroRide": "Ride with a Rafeeq"
+  },
+  "place": {
+    "distance": "{{distance}} from the hotel",
+    "walk": "{{minutes}} min walk",
+    "evening": "Opens in the evening",
+    "freeEntry": "Free entry",
+    "checkIn": "Check in",
+    "checkedIn": "Checked in",
+    "checkedInAt": "Checked in at {{time}}",
+    "lockedTitle": "Part of the bonus zone",
+    "goWithRafeeq": "Go with a Rafeeq",
+    "alsoCoffee": "Coffee and records",
+    "hoursToday": "Today {{from}} – {{to}}",
+    "closedToday": "Closed today",
+    "openNow": "Open now",
+    "closedNow": "Closed now"
+  },
+  "metro": {
+    "station": "Metro station",
+    "blue": "Blue Line",
+    "planned": "A Red Line extension to Diriyah is planned."
+  },
+  "places": {
+    "national-museum": {
+      "name": "The National Museum",
+      "desc": "The history of Arabia, from its first settlements to the founding of the Kingdom."
+    },
+    "murabba-palace": {
+      "name": "Murabba Historical Palace",
+      "desc": "A mud-brick palace with vintage royal cars in its grounds."
+    },
+    "darah": {
+      "name": "King Abdulaziz Darah",
+      "desc": "The archive of the Kingdom's history, beside Murabba Palace."
+    },
+    "masmak": {
+      "name": "Al Masmak Palace Museum",
+      "desc": "The clay fort at the heart of old Riyadh, next to Souq Al Zal."
+    },
+    "al-afrah": {
+      "name": "Al-Afrah",
+      "desc": "Traditional Saudi breakfast."
+    },
+    "al-taif-kitchens": {
+      "name": "Al Taif Kitchens",
+      "desc": "Mandi: slow-cooked rice and meat."
+    },
+    "marthad": {
+      "name": "Marthad Specialty Coffee",
+      "desc": "Specialty coffee, a short walk from the hotel."
+    },
+    "illume": {
+      "name": "illume Café and Roastery",
+      "desc": "A café that roasts its own beans."
+    },
+    "bygone-years": {
+      "name": "Museum of Bygone Years",
+      "desc": "An old Saudi house, kept as it was."
+    },
+    "bujairi-terrace": {
+      "name": "Bujairi Terrace",
+      "desc": "Restaurants and cafés overlooking At-Turaif."
+    },
+    "at-turaif": {
+      "name": "At-Turaif",
+      "desc": "The mud-brick seat of the first Saudi state, a UNESCO World Heritage Site."
+    },
+    "diriyah-museum": {
+      "name": "Diriyah History Museum",
+      "desc": "The story of Diriyah, told inside Salwa Palace."
+    },
+    "turaif-viewpoint": {
+      "name": "At-Turaif Viewpoint",
+      "desc": "A lookout over the walls and towers of At-Turaif."
+    },
+    "maiz": {
+      "name": "Maiz",
+      "desc": "Saudi fine dining."
+    },
+    "cova": {
+      "name": "Cova Pasticceria",
+      "desc": "Pastries and coffee by Bujairi."
+    },
+    "the-warehouse": {
+      "name": "The Warehouse",
+      "desc": "A live music venue in a converted warehouse."
+    },
+    "bohemia": {
+      "name": "Bohemia Café and Records",
+      "desc": "Coffee and a record shop under one roof."
+    },
+    "jax-01": {
+      "name": "Jax 01",
+      "desc": "The main gallery hall of JAX District."
+    },
+    "sky-bridge": {
+      "name": "Kingdom Centre Sky Bridge",
+      "desc": "The bridge across the top of Kingdom Centre, with the whole city below."
+    },
+    "mamlaka-social": {
+      "name": "Al Mamlaka Social Dining",
+      "desc": "A food hall inside Kingdom Centre."
+    },
+    "the-roof": {
+      "name": "The Roof at Al Mamlaka",
+      "desc": "Dining on the roof of Al Mamlaka."
+    },
+    "al-faisaliah": {
+      "name": "Al Faisaliah Tower",
+      "desc": "An observation deck in the golden globe, and a mall below."
+    },
+    "morfi": {
+      "name": "MORFi",
+      "desc": "Specialty coffee next door to the hotel."
+    },
+    "goat": {
+      "name": "GOAT by REEHAM",
+      "desc": "Coffee around the corner from the hotel."
+    },
+    "the-gate": {
+      "name": "The Gate Specialty Coffee",
+      "desc": "Specialty coffee by Kingdom Centre."
+    },
+    "passport-dept": {
+      "name": "Passport Department"
+    },
+    "al-murabba-station": {
+      "name": "Al Murabba"
+    },
+    "al-urubah-station": {
+      "name": "Al Urubah"
+    },
+    "jax": {
+      "name": "JAX District",
+      "desc": "Converted warehouses turned into galleries, studios and a music venue."
+    }
+  },
+  "rafeeq": {
+    "title": "Rafeeq",
+    "subtitle": "Book a local guide by the hour.",
+    "speaks": "Speaks",
+    "anyLanguage": "Any",
+    "licensed": "Licensed guide",
+    "perHour": "{{price}} per hour",
+    "rating": "Rated {{rating}} out of 5",
+    "availableNow": "Available today",
+    "availableTomorrow": "Available tomorrow",
+    "availableFrom": "Available from {{time}}",
+    "countGuides_one": "{{count}} guide",
+    "countGuides_other": "{{count}} guides",
+    "empty": "No guide speaks {{language}} in this downtown yet. Try another language.",
+    "allLicensed": "All licensed",
+    "area": "Downtown",
+    "allAreas": "All",
+    "covers": "Guides in {{list}}"
+  },
+  "suhail": {
+    "open": "Ask Suhail",
+    "tagline": "Your guiding star in Riyadh",
+    "welcomeTitle": "Hi, I'm Suhail",
+    "welcomeCity": "Like the star that guided desert travellers, I'll help you choose a downtown and plan your days.",
+    "welcomeDowntown": "Ask me anything about {{name}}: what's open, where to eat, what to see next.",
+    "placeholder": "Ask Suhail…",
+    "send": "Send",
+    "newChat": "New chat",
+    "typing": "Suhail is typing",
+    "you": "You",
+    "offlineTitle": "Suhail isn't connected yet",
+    "offlineText": "The assistant will answer here as soon as it's switched on. A local guide can help in the meantime.",
+    "failed": "Suhail lost the signal. Try again in a moment.",
+    "busy": "Lots of travellers are asking right now. Try again in a moment.",
+    "refusal": "I can't help with that one. Ask me about the places in the app.",
+    "retry": "Try again",
+    "suggest": {
+      "whichDowntown": "Which downtown suits me?",
+      "oneEvening": "I have one free evening. Where should I go?",
+      "metro": "Which hotel is easiest by metro?",
+      "openNow": "What's open now?",
+      "dinner": "Best place for dinner",
+      "heritage": "Tell me about the heritage spots",
+      "landmarks": "Tell me about the landmarks",
+      "next": "Where should I go next?"
+    }
+  },
+  "specialties": {
+    "history": "History",
+    "architecture": "Architecture",
+    "food": "Food",
+    "coffee": "Coffee",
+    "art": "Art",
+    "music": "Music",
+    "photography": "Photography"
+  },
+  "guides": {
+    "noura": "Noura Al-Harbi",
+    "turki": "Turki Al-Qahtani",
+    "lin": "Lin Yue",
+    "reem": "Reem Al-Otaibi",
+    "majed": "Majed Al-Shammari",
+    "hessa": "Hessa Al-Mutairi",
+    "sara": "Sara Al-Dossary",
+    "omar": "Omar Al-Zahrani"
+  },
+  "booking": {
+    "title": "Book {{name}}",
+    "duration": "Duration",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours",
+    "hoursShort": "{{count}} h",
+    "custom": "Custom",
+    "fewer": "One hour less",
+    "more": "One hour more",
+    "date": "Date",
+    "start": "Start time",
+    "include": "Places to include",
+    "includeCount": "{{count}} selected",
+    "total": "Total",
+    "totalDetail": "{{hours}} × {{rate}}",
+    "confirm": "Confirm booking",
+    "confirmed": "You're booked",
+    "summary": "{{name}} will meet you in the hotel lobby on {{date}} at {{time}}.",
+    "reference": "Booking reference",
+    "backToMap": "Back to the map",
+    "unavailable": "Not available at this time"
+  },
+  "price": "{{amount}} SAR",
+  "settings": {
+    "title": "Settings",
+    "progress": "Your progress",
+    "reset": "Reset all check-ins and bookings",
+    "resetConfirm": "Tap again to reset",
+    "resetDone": "Progress cleared"
+  }
+}

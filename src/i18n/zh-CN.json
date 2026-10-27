@@ -1,0 +1,294 @@
+{
+  "app": {
+    "name": "苏海尔"
+  },
+  "common": {
+    "back": "返回",
+    "close": "关闭",
+    "settings": "设置",
+    "language": "语言",
+    "continue": "继续"
+  },
+  "city": {
+    "title": "利雅得",
+    "subtitle": "三家酒店，三个街区。点选您入住的那一家。",
+    "placesCount_other": "{{count}} 个地点可探索",
+    "stayHere": "我住在这里",
+    "openHotel": "打开{{name}}",
+    "visitedSoFar": "已打卡 {{done}}/{{total}}"
+  },
+  "downtowns": {
+    "ramada": {
+      "name": "古都",
+      "hotel": "利雅得法赫德国王路华美达酒店",
+      "hotelShort": "华美达法赫德国王路",
+      "vibe": "法赫德国王路上的 24 层高楼，离利雅得老城的宫殿只有一小段车程。"
+    },
+    "bab-samhan": {
+      "name": "遗产之村",
+      "hotel": "德拉伊耶巴布萨姆汉豪华精选酒店",
+      "hotelShort": "巴布萨姆汉，德拉伊耶",
+      "vibe": "德拉伊耶的泥砖庭院，步行即可到达图赖夫。"
+    },
+    "comfort-olaya": {
+      "name": "天际线街区",
+      "hotel": "利雅得奥拉亚凯富酒店",
+      "hotelShort": "凯富奥拉亚",
+      "vibe": "奥拉亚的玻璃与石材，就在王国中心脚下。"
+    }
+  },
+  "categories": {
+    "all": "全部",
+    "heritage": "古迹",
+    "food": "美食",
+    "coffee": "咖啡",
+    "music": "音乐与艺术",
+    "landmark": "地标",
+    "metro": "地铁"
+  },
+  "map": {
+    "progress": "已打卡 {{done}}/{{total}} 个地点",
+    "progressLabel": "已打卡地点",
+    "backToCity": "返回城市",
+    "finalStop": "终点",
+    "home": "您的酒店",
+    "bonusZone": "奖励区域",
+    "bonusLocked": "打卡所有古迹后解锁",
+    "bonusUnlocked": "已解锁。向西 3.5 公里，可驾车或由向导陪同前往",
+    "filtersLabel": "筛选地点",
+    "emptyFilter": "这个街区没有{{category}}地点，请换一个筛选。",
+    "bookGuide": "预约导游",
+    "noMetroTitle": "暂无地铁",
+    "noMetroRide": "由向导陪同出行"
+  },
+  "place": {
+    "distance": "距酒店 {{distance}}",
+    "walk": "步行 {{minutes}} 分钟",
+    "evening": "傍晚开放",
+    "freeEntry": "免费入场",
+    "checkIn": "打卡",
+    "checkedIn": "已打卡",
+    "checkedInAt": "{{time}} 已打卡",
+    "lockedTitle": "属于奖励区域",
+    "goWithRafeeq": "由向导陪同前往",
+    "alsoCoffee": "咖啡与唱片",
+    "hoursToday": "今天 {{from}}–{{to}}",
+    "closedToday": "今天不营业",
+    "openNow": "营业中",
+    "closedNow": "已打烊"
+  },
+  "metro": {
+    "station": "地铁站",
+    "blue": "蓝线",
+    "planned": "红线延伸至德拉伊耶的计划正在推进。"
+  },
+  "places": {
+    "national-museum": {
+      "name": "沙特国家博物馆",
+      "desc": "阿拉伯半岛的历史，从最早的聚落一直讲到王国建立。"
+    },
+    "murabba-palace": {
+      "name": "穆拉巴宫",
+      "desc": "一座泥砖宫殿，院中陈列着王室老爷车。"
+    },
+    "darah": {
+      "name": "阿卜杜勒阿齐兹国王档案馆",
+      "desc": "沙特王国的历史档案馆，紧邻穆拉巴宫。"
+    },
+    "masmak": {
+      "name": "马斯马克堡博物馆",
+      "desc": "利雅得老城中心的土坯城堡，旁边就是扎尔市场。"
+    },
+    "al-afrah": {
+      "name": "阿夫拉赫餐厅",
+      "desc": "传统沙特早餐。"
+    },
+    "al-taif-kitchens": {
+      "name": "塔伊夫厨房",
+      "desc": "曼迪饭：慢火焖制的米饭与肉。"
+    },
+    "marthad": {
+      "name": "Marthad 精品咖啡",
+      "desc": "精品咖啡，离酒店几步之遥。"
+    },
+    "illume": {
+      "name": "illume 咖啡烘焙馆",
+      "desc": "自家烘焙咖啡豆的咖啡馆。"
+    },
+    "bygone-years": {
+      "name": "往昔博物馆",
+      "desc": "一座保留原貌的沙特老宅。"
+    },
+    "bujairi-terrace": {
+      "name": "布贾伊里露台",
+      "desc": "俯瞰图赖夫的餐厅与咖啡馆。"
+    },
+    "at-turaif": {
+      "name": "图赖夫",
+      "desc": "第一沙特国的泥砖都城，联合国教科文组织世界遗产。"
+    },
+    "diriyah-museum": {
+      "name": "德拉伊耶历史博物馆",
+      "desc": "在萨尔瓦宫内讲述德拉伊耶的故事。"
+    },
+    "turaif-viewpoint": {
+      "name": "图赖夫观景台",
+      "desc": "俯瞰图赖夫城墙与塔楼的观景点。"
+    },
+    "maiz": {
+      "name": "Maiz 餐厅",
+      "desc": "沙特高级料理。"
+    },
+    "cova": {
+      "name": "Cova 甜品店",
+      "desc": "布贾伊里旁的甜点与咖啡。"
+    },
+    "the-warehouse": {
+      "name": "The Warehouse 现场音乐厅",
+      "desc": "由仓库改建的现场音乐场地。"
+    },
+    "bohemia": {
+      "name": "Bohemia 咖啡唱片店",
+      "desc": "咖啡馆与唱片店合二为一。"
+    },
+    "jax-01": {
+      "name": "JAX 01 展厅",
+      "desc": "JAX 艺术区的主展厅。"
+    },
+    "sky-bridge": {
+      "name": "王国中心天空之桥",
+      "desc": "横跨王国中心顶端的天桥，整座城市尽收眼底。"
+    },
+    "mamlaka-social": {
+      "name": "Al Mamlaka 美食广场",
+      "desc": "王国中心内的美食广场。"
+    },
+    "the-roof": {
+      "name": "Al Mamlaka 屋顶餐厅",
+      "desc": "在 Al Mamlaka 屋顶用餐。"
+    },
+    "al-faisaliah": {
+      "name": "费萨利亚塔",
+      "desc": "金色球体内的观景台，楼下是购物中心。"
+    },
+    "morfi": {
+      "name": "MORFi 咖啡",
+      "desc": "酒店隔壁的精品咖啡。"
+    },
+    "goat": {
+      "name": "GOAT by REEHAM 咖啡",
+      "desc": "酒店街角的咖啡店。"
+    },
+    "the-gate": {
+      "name": "The Gate 精品咖啡",
+      "desc": "王国中心旁的精品咖啡。"
+    },
+    "passport-dept": {
+      "name": "护照局站"
+    },
+    "al-murabba-station": {
+      "name": "穆拉巴站"
+    },
+    "al-urubah-station": {
+      "name": "乌鲁巴站"
+    },
+    "jax": {
+      "name": "JAX 艺术区",
+      "desc": "由旧仓库改建的画廊、工作室和音乐场地。"
+    }
+  },
+  "rafeeq": {
+    "title": "Rafeeq 向导",
+    "subtitle": "按小时预约本地导游。",
+    "speaks": "语言",
+    "anyLanguage": "全部",
+    "licensed": "持证向导",
+    "perHour": "每小时 {{price}}",
+    "rating": "评分 {{rating}}（满分 5）",
+    "availableNow": "今天可约",
+    "availableTomorrow": "明天可约",
+    "availableFrom": "{{time}} 起可约",
+    "countGuides_other": "{{count}} 位向导",
+    "empty": "这个街区暂无会说{{language}}的向导，请换一种语言。",
+    "allLicensed": "全部持证",
+    "area": "街区",
+    "allAreas": "全部",
+    "covers": "服务街区：{{list}}"
+  },
+  "suhail": {
+    "open": "问问苏海尔",
+    "tagline": "你在利雅得的指路星",
+    "welcomeTitle": "你好，我是苏海尔",
+    "welcomeCity": "就像曾为沙漠旅人指路的那颗星，我会帮你挑选街区、安排行程。",
+    "welcomeDowntown": "关于{{name}}，尽管问我：现在哪里营业、去哪里吃饭、下一站看什么。",
+    "placeholder": "问问苏海尔…",
+    "send": "发送",
+    "newChat": "新对话",
+    "typing": "苏海尔正在输入",
+    "you": "你",
+    "offlineTitle": "苏海尔尚未连接",
+    "offlineText": "助手开通后会在这里回答你。在此之前，可以请一位本地向导帮忙。",
+    "failed": "苏海尔信号中断了，请稍后再试。",
+    "busy": "现在提问的旅客很多，请稍后再试。",
+    "refusal": "这个问题我帮不上忙。可以问问我应用里的地点。",
+    "retry": "重试",
+    "suggest": {
+      "whichDowntown": "哪个街区适合我？",
+      "oneEvening": "我只有一个空闲的晚上，该去哪儿？",
+      "metro": "哪家酒店乘地铁最方便？",
+      "openNow": "现在哪里在营业？",
+      "dinner": "晚餐去哪里最好",
+      "heritage": "介绍一下这里的遗产景点",
+      "landmarks": "介绍一下这里的地标",
+      "next": "下一站去哪里？"
+    }
+  },
+  "specialties": {
+    "history": "历史",
+    "architecture": "建筑",
+    "food": "美食",
+    "coffee": "咖啡",
+    "art": "艺术",
+    "music": "音乐",
+    "photography": "摄影"
+  },
+  "guides": {
+    "noura": "努拉·哈尔比",
+    "turki": "图尔基·盖赫塔尼",
+    "lin": "林悦",
+    "reem": "丽姆·奥泰比",
+    "majed": "马吉德·沙玛里",
+    "hessa": "赫萨·穆泰里",
+    "sara": "萨拉·多萨里",
+    "omar": "奥马尔·扎赫拉尼"
+  },
+  "booking": {
+    "title": "预约{{name}}",
+    "duration": "时长",
+    "hours_other": "{{count}} 小时",
+    "hoursShort": "{{count}} 小时",
+    "custom": "自定义",
+    "fewer": "减少一小时",
+    "more": "增加一小时",
+    "date": "日期",
+    "start": "开始时间",
+    "include": "包含的地点",
+    "includeCount": "已选 {{count}} 个",
+    "total": "总价",
+    "totalDetail": "{{hours}} × {{rate}}",
+    "confirm": "确认预约",
+    "confirmed": "预约成功",
+    "summary": "{{name}}将于{{date}} {{time}}在酒店大堂与您会面。",
+    "reference": "预约编号",
+    "backToMap": "返回地图",
+    "unavailable": "该时段不可预约"
+  },
+  "price": "{{amount}} 里亚尔",
+  "settings": {
+    "title": "设置",
+    "progress": "您的进度",
+    "reset": "清除所有打卡与预约",
+    "resetConfirm": "再点一次以清除",
+    "resetDone": "进度已清除"
+  }
+}

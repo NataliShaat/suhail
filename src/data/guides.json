@@ -1,0 +1,12 @@
+{
+  "guides": [
+    {"id": "noura", "downtowns": ["ramada", "bab-samhan"], "languages": ["ar", "en", "zh-CN"], "specialties": ["history", "architecture"], "rating": 4.9, "rate": 180, "availability": {"kind": "now"}},
+    {"id": "turki", "downtowns": ["comfort-olaya", "ramada"], "languages": ["ar", "en"], "specialties": ["food", "coffee"], "rating": 4.8, "rate": 140, "availability": {"kind": "now"}},
+    {"id": "lin", "downtowns": ["bab-samhan", "comfort-olaya"], "languages": ["zh-CN", "en", "ar"], "specialties": ["history", "photography"], "rating": 4.9, "rate": 200, "availability": {"kind": "tomorrow"}},
+    {"id": "reem", "downtowns": ["bab-samhan"], "languages": ["ar", "en"], "specialties": ["art", "music"], "rating": 4.7, "rate": 160, "availability": {"kind": "from", "hour": 18}},
+    {"id": "majed", "downtowns": ["ramada", "comfort-olaya"], "languages": ["ar", "en", "zh-CN"], "specialties": ["architecture", "history"], "rating": 4.8, "rate": 220, "availability": {"kind": "from", "hour": 16}},
+    {"id": "hessa", "downtowns": ["comfort-olaya", "ramada"], "languages": ["ar", "en", "zh-CN"], "specialties": ["coffee", "food", "art"], "rating": 4.9, "rate": 190, "availability": {"kind": "tomorrow"}},
+    {"id": "sara", "downtowns": ["ramada"], "languages": ["ar", "en"], "specialties": ["food", "history"], "rating": 4.6, "rate": 120, "availability": {"kind": "now"}},
+    {"id": "omar", "downtowns": ["bab-samhan"], "languages": ["ar"], "specialties": ["history", "photography"], "rating": 4.8, "rate": 110, "availability": {"kind": "now"}}
+  ]
+}

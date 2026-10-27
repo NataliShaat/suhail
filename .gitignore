@@ -1,0 +1,11 @@
+node_modules
+dist
+.taste-skill
+*.log
+*.tsbuildinfo
+.vercel
+
+# Secrets: the Anthropic key lives here, only on your machine
+.env
+.env.*
+!.env.example
