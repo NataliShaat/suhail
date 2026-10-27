@@ -130,8 +130,4 @@ On Vercel, set `CHAT_ALLOWED_ORIGINS` to your own site (for example `https://you
 
 ## Team
 
-| Name | Role |
-|---|---|
-| [Name] | [Role] |
-| [Name] | [Role] |
-| [Name] | [Role] |
+Natoolz
