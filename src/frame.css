@@ -116,35 +116,6 @@ html, body { overscroll-behavior: none; touch-action: manipulation; }
 .backdrop { position: absolute; inset: 0; pointer-events: none; color: var(--white); }
 .backdrop-stars { position: absolute; inset: 0; }
 .backdrop-stars .header-star { opacity: 0.45; }
-.backdrop-side {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: calc(50% - 207px * var(--device-scale, 1));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-  padding: 24px;
-}
-.backdrop-brand { left: 0; }
-.backdrop-qr { right: 0; }
-.backdrop-brand .mark { width: auto; height: clamp(72px, 8vw, 120px); filter: drop-shadow(0 8px 30px rgba(227, 168, 60, 0.25)); }
-.backdrop-name { font-size: clamp(30px, 3vw, 46px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-:lang(ar) .backdrop-name, :lang(zh-CN) .backdrop-name { letter-spacing: 0; }
-.backdrop-tagline { color: var(--muted-on-night); font-size: clamp(14px, 1.1vw, 18px); max-width: 22ch; }
-.qr {
-  width: clamp(132px, 11vw, 190px);
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 0 0 6px rgba(227, 168, 60, 0.35), 0 20px 50px rgba(0, 0, 0, 0.45);
-}
-.backdrop-scan { color: #F6CF7A; font-weight: 700; font-size: clamp(15px, 1.2vw, 20px); }
-/* No room beside the phone: just the phone. */
-@media (max-width: 1040px) { .backdrop-side { display: none; } }
-
 /* ---------- Launch splash ---------- */
 .splash {
   position: absolute;
