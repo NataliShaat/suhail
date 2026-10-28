@@ -1,0 +1,226 @@
+/* The desktop phone frame, the launch splash, the install banner and the app-like touch behaviour. */
+
+/* ---------- App feel, everywhere ---------- */
+html, body { overscroll-behavior: none; touch-action: manipulation; }
+.screen {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.screen input, .screen textarea { -webkit-user-select: text; user-select: text; }
+/* Pinch-zoom stays off the UI; the map canvas keeps its own gestures. */
+.ui-layer { touch-action: pan-x pan-y; }
+/* Scrolling stays, the scrollbars go, as in a native app. */
+.screen * { scrollbar-width: none; }
+.screen *::-webkit-scrollbar { display: none; }
+/* Every tappable thing gives way a little under the finger; buttons with their own press style keep it. */
+.screen button { touch-action: manipulation; transition: transform 140ms var(--ease-out), background-color 160ms, opacity 160ms; }
+.screen button:not(:disabled):active { transform: scale(0.96); }
+
+/* ---------- Desktop: a 390 × 844 phone, scaled to the window ---------- */
+.stage.is-framed {
+  inset: 0;
+  height: auto;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse 70% 80% at 50% 45%, #1E1C44 0%, #14122B 55%, #0B0A1C 100%);
+  /* The status bar and Dynamic Island take the top of the screen, as on an iPhone 15. */
+  --top: 54px;
+  --below-bar: calc(var(--top) + 46px);
+  --safe-bottom: 16px;
+}
+/* Centred on its own box, then scaled: a grid would grow its row to the unscaled 868px on short windows. */
+.is-framed .device {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 414px;
+  height: 868px;
+  padding: 12px;
+  border-radius: 66px;
+  background: linear-gradient(150deg, #34334A 0%, #0B0A14 22%, #07060D 70%, #23222F 100%);
+  box-shadow:
+    inset 0 0 0 1.5px #4A4960,
+    inset 0 0 0 5px #08070E,
+    0 50px 100px -20px rgba(0, 0, 0, 0.7),
+    0 30px 60px -30px rgba(227, 168, 60, 0.18);
+  transform: scale(var(--device-scale, 1));
+  transform-origin: center;
+  z-index: 1;
+}
+.is-framed .screen { border-radius: 54px; }
+
+/* Action button and volume keys on the left, the side button on the right. */
+.device-key {
+  position: absolute;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1A1925, #3C3B52);
+}
+.device-key.is-action { left: -3px; top: 150px; height: 34px; }
+.device-key.is-volume-up { left: -3px; top: 208px; height: 62px; }
+.device-key.is-volume-down { left: -3px; top: 284px; height: 62px; }
+.device-key.is-power { right: -3px; top: 236px; height: 100px; background: linear-gradient(270deg, #1A1925, #3C3B52); }
+
+.island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  translate: -50% 0;
+  width: 122px;
+  height: 35px;
+  border-radius: 20px;
+  background: #000;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.status-bar {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 54px;
+  padding: 4px 30px 0 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  direction: ltr;
+  color: var(--white);
+  z-index: 80;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', var(--font-latin);
+  transition: color 240ms ease;
+}
+.status-bar.is-dark { color: var(--night); }
+.status-time { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.status-icons { display: flex; align-items: center; gap: 6px; }
+.status-battery { fill: var(--gold); }
+.home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  translate: -50% 0;
+  width: 134px;
+  height: 5px;
+  border-radius: 3px;
+  background: #FFFFFF;
+  mix-blend-mode: difference;
+  opacity: 0.9;
+  z-index: 80;
+  pointer-events: none;
+}
+
+/* ---------- Behind the phone ---------- */
+.backdrop { position: absolute; inset: 0; pointer-events: none; color: var(--white); }
+.backdrop-stars { position: absolute; inset: 0; }
+.backdrop-stars .header-star { opacity: 0.45; }
+.backdrop-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(50% - 207px * var(--device-scale, 1));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 24px;
+}
+.backdrop-brand { left: 0; }
+.backdrop-qr { right: 0; }
+.backdrop-brand .mark { width: auto; height: clamp(72px, 8vw, 120px); filter: drop-shadow(0 8px 30px rgba(227, 168, 60, 0.25)); }
+.backdrop-name { font-size: clamp(30px, 3vw, 46px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+:lang(ar) .backdrop-name, :lang(zh-CN) .backdrop-name { letter-spacing: 0; }
+.backdrop-tagline { color: var(--muted-on-night); font-size: clamp(14px, 1.1vw, 18px); max-width: 22ch; }
+.qr {
+  width: clamp(132px, 11vw, 190px);
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 0 0 6px rgba(227, 168, 60, 0.35), 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.backdrop-scan { color: #F6CF7A; font-weight: 700; font-size: clamp(15px, 1.2vw, 20px); }
+/* No room beside the phone: just the phone. */
+@media (max-width: 1040px) { .backdrop-side { display: none; } }
+
+/* ---------- Launch splash ---------- */
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: radial-gradient(circle at 50% 42%, #24224D 0%, var(--night) 45%, var(--night-deep) 100%);
+  color: var(--white);
+}
+.splash.is-tap { cursor: pointer; }
+.splash-mark { position: relative; }
+.splash-mark .mark { display: block; }
+.splash-star {
+  position: absolute;
+  top: 18%;
+  left: 6%;
+  line-height: 0;
+  animation: splash-twinkle 1.3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(251, 227, 166, 0.9));
+}
+@keyframes splash-twinkle {
+  0%, 100% { opacity: 0.55; transform: scale(0.7) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(20deg); }
+}
+.splash-name { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+:lang(ar) .splash-name, :lang(zh-CN) .splash-name { letter-spacing: 0; }
+.splash-tap {
+  position: absolute;
+  bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  min-height: 44px;
+  padding-inline: 20px;
+  border-radius: var(--pill);
+  color: var(--muted-on-night);
+  font-size: var(--fs-s);
+  font-weight: 600;
+  animation: splash-pulse 1.8s ease-in-out infinite;
+}
+@keyframes splash-pulse { 50% { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .splash-star, .splash-tap { animation: none !important; } }
+
+/* ---------- Install banner (real phones) ---------- */
+.install-banner {
+  position: absolute;
+  inset-inline: 12px;
+  bottom: calc(28px + 56px + 14px + env(safe-area-inset-bottom, 0px));
+  z-index: 22;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 8px 8px 8px 10px;
+  padding-inline: 10px 8px;
+  border-radius: 20px;
+  background: var(--night);
+  color: var(--white);
+  box-shadow: 0 0 0 1px rgba(227, 168, 60, 0.35), 0 14px 34px rgba(5, 4, 16, 0.5);
+}
+.install-icon { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--night-raised); }
+.install-icon .mark { width: auto; height: 30px; }
+.install-action {
+  flex: 1;
+  min-height: 44px;
+  border-radius: var(--pill);
+  background: var(--gold);
+  color: var(--night);
+  font-weight: 700;
+  font-size: var(--fs-s);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.install-ios { flex: 1; font-size: var(--fs-s); font-weight: 600; line-height: var(--lh-tight); }
+.install-share { color: #4DA3FF; vertical-align: -3px; margin-inline-end: 6px; }
+.install-close { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--muted-on-night); }

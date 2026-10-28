@@ -16,6 +16,7 @@ import { Sea } from './Sea';
 import { CAMERA_FOV, fitCamera, textWidth, type FitPoint } from './fit';
 import { frameDowntown, type Framing } from './frameDowntown';
 import { clamp01, easeInOutCubic, flight } from './sceneState';
+import { useDeviceFrame } from '../ui/frame';
 
 const HOTEL_HEIGHT = { ramada: 3.25, babsamhan: 1.1, comfort: 3.15 } as const;
 const SINK = -2.2;
@@ -378,10 +379,13 @@ function Scene() {
 }
 
 export function CityScene() {
+  // Pixels the canvas really covers: the phone frame may be scaled up or down on a desktop screen.
+  const frameScale = useDeviceFrame((s) => s.scale);
+  const dpr = Math.min(2, Math.max(1, window.devicePixelRatio * frameScale));
   return (
     <Canvas
       className="canvas"
-      dpr={[1, 1.75]}
+      dpr={dpr}
       shadows="percentage"
       camera={{ fov: CAMERA_FOV, near: 1, far: 160, position: [0, 30, 26] }}
       flat

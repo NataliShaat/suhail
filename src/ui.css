@@ -135,7 +135,7 @@
   inset-inline-end: 12px;
 }
 .sheet-body {
-  padding: 4px 20px 28px;
+  padding: 4px 20px calc(28px + var(--safe-bottom));
   overflow-y: auto;
   overscroll-behavior: contain;
   touch-action: pan-y;
@@ -257,7 +257,7 @@
 .fab-dock {
   position: absolute;
   inset-inline: 0;
-  bottom: 28px;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1045,7 +1045,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  padding: 10px 16px calc(14px + var(--safe-bottom));
   border-top: 1px solid var(--night-line);
 }
 .suhail-input {

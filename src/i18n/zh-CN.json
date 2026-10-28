@@ -290,5 +290,17 @@
     "reset": "清除所有打卡与预约",
     "resetConfirm": "再点一次以清除",
     "resetDone": "进度已清除"
+  },
+  "frame": {
+    "scan": "扫码体验苏海尔"
+  },
+  "splash": {
+    "tapToStart": "轻点开始"
+  },
+  "install": {
+    "title": "安装苏海尔",
+    "android": "安装苏海尔",
+    "ios": "点按“分享”，再选择“添加到主屏幕”",
+    "dismiss": "以后再说"
   }
 }

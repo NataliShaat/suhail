@@ -14,6 +14,7 @@ import { SettingsSheet } from './screens/Settings';
 import { LangBar } from './ui/LangBar';
 import { GuideFab } from './screens/GuideFab';
 import { SuhailChat } from './screens/SuhailChat';
+import { InstallBanner } from './ui/InstallBanner';
 import { getDowntown } from './data';
 import { THEMES } from './config';
 
@@ -42,6 +43,7 @@ export function App() {
               <CityOverview />
               <DowntownMap />
               <GuideFab />
+              <InstallBanner />
               <PlaceSheet />
               <RafeeqScreen />
               <SettingsSheet />

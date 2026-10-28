@@ -34,8 +34,10 @@
   --pill: 999px;
   --gutter: 16px;
   /* The language bar sits under the status area; every screen header starts below it. */
-  --top: 46px;
+  --top: calc(env(safe-area-inset-top, 0px) + 10px);
   --below-bar: calc(var(--top) + 46px);
+  /* Room for the home indicator under sheets and the chat box (the phone frame sets its own). */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -78,53 +80,27 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-/* ---------- Phone frame ---------- */
+/* ---------- Screen ---------- */
+/* On a phone the app fills the screen. 100dvh keeps it exactly above the browser toolbar, with 100vh
+   for older browsers. The desktop phone frame is in frame.css. */
 .stage {
   position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
+  background: var(--night-deep);
 }
-.device {
-  position: relative;
-  width: 390px;
-  height: 844px;
-  border-radius: 54px;
-  background: #050410;
-  padding: 11px;
-  flex: none;
-  transform: scale(var(--device-scale, 1));
-  transform-origin: center;
-}
+.device { position: relative; width: 100%; height: 100%; }
 .screen {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 44px;
   overflow: hidden;
   background: var(--night);
   isolation: isolate;
-}
-.device .screen { width: 368px; height: 822px; }
-.notch {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  translate: -50% 0;
-  width: 110px;
-  height: 32px;
-  border-radius: 20px;
-  background: #050410;
-  z-index: 60;
-  pointer-events: none;
-}
-@media (max-width: 600px), (max-height: 640px) and (pointer: coarse) {
-  .stage { position: fixed; inset: 0; display: block; }
-  .device { width: 100%; height: 100%; padding: 0; border-radius: 0; transform: none; }
-  .device .screen { width: 100%; height: 100%; border-radius: 0; }
-  .notch { display: none; }
-  :root { --top: calc(env(safe-area-inset-top, 0px) + 10px); }
 }
 
 .app { position: absolute; inset: 0; }
