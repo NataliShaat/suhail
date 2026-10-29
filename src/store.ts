@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Category, GuideLang } from './data';
+import { getDowntown } from './data';
 
 export type Lang = GuideLang;
 export type View = 'city' | 'flyingIn' | 'downtown' | 'flyingOut';
@@ -102,6 +103,8 @@ export const useStore = create<State>()(
 /**
  * Demo and test deep links: ?lang=ar&dt=ramada&visited=illume,marthad&rafeeq=1&guide=lin&suhail=1
  * Used to jump straight to a state when rehearsing or taking screenshots.
+ * ?demo=ramada opens that downtown with every main-route place visited except the final one, celebration unfired,
+ * so one check-in shows star, counter, confetti and reward.
  */
 export function applyDeepLink() {
   const q = new URLSearchParams(window.location.search);
@@ -114,6 +117,18 @@ export function applyDeepLink() {
   const visited = q.get('visited');
   if (visited !== null) {
     patch.visited = Object.fromEntries(visited.split(',').filter(Boolean).map((id) => [id, Date.now()]));
+  }
+  const demo = getDowntown(q.get('demo'));
+  if (demo) {
+    const last = demo.places.find((p) => p.final) ?? demo.places[demo.places.length - 1];
+    const others = demo.places.filter((p) => p !== last);
+    Object.assign(patch, {
+      visited: Object.fromEntries(others.map((p) => [p.id, Date.now()])),
+      completed: {},
+      rewardFor: null,
+      downtownId: demo.id,
+      view: 'downtown' as View,
+    });
   }
   const dt = q.get('dt');
   if (dt) Object.assign(patch, { downtownId: dt, view: 'downtown' as View });
