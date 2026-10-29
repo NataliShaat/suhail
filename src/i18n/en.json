@@ -287,10 +287,37 @@
     "unavailable": "Not available at this time"
   },
   "price": "{{amount}} SAR",
+  "stars": {
+    "label": "Stars earned: {{count}} of {{total}}"
+  },
+  "reward": {
+    "title": "Downtown complete!",
+    "subtitle": "You visited every place in {{name}}.",
+    "stars": "Stars earned",
+    "offer": "You unlocked {{percent}}% off your next stay at {{hotel}}",
+    "codeLabel": "Your reward code",
+    "done": "Done"
+  },
+  "voucher": {
+    "title": "Voucher",
+    "locked": "Visit this place to unlock your voucher",
+    "unlocked": "Voucher unlocked",
+    "codeLabel": "Your voucher code",
+    "copy": "Copy code",
+    "copied": "Copied",
+    "badge": "Voucher here",
+    "offers": {
+      "pct10": "10% off your bill",
+      "pct15": "15% off your bill",
+      "saudiCoffee": "Free Saudi coffee with any order",
+      "pastry": "Free pastry with any coffee",
+      "bogoDessert": "Buy one dessert, get one free"
+    }
+  },
   "settings": {
     "title": "Settings",
     "progress": "Your progress",
-    "reset": "Reset all check-ins and bookings",
+    "reset": "Reset check-ins, stars, rewards and bookings",
     "resetConfirm": "Tap again to reset",
     "resetDone": "Progress cleared"
   },

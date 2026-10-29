@@ -284,10 +284,37 @@
     "unavailable": "该时段不可预约"
   },
   "price": "{{amount}} 里亚尔",
+  "stars": {
+    "label": "已获得 {{count}}/{{total}} 颗星"
+  },
+  "reward": {
+    "title": "街区探索完成！",
+    "subtitle": "您已走遍{{name}}的每一处。",
+    "stars": "获得的星星",
+    "offer": "您已解锁{{hotel}}下次入住 {{percent}}% 优惠",
+    "codeLabel": "您的奖励码",
+    "done": "完成"
+  },
+  "voucher": {
+    "title": "优惠券",
+    "locked": "到访此地即可解锁优惠券",
+    "unlocked": "优惠券已解锁",
+    "codeLabel": "您的优惠码",
+    "copy": "复制优惠码",
+    "copied": "已复制",
+    "badge": "有优惠券",
+    "offers": {
+      "pct10": "账单立减 10%",
+      "pct15": "账单立减 15%",
+      "saudiCoffee": "任意消费赠送沙特咖啡一杯",
+      "pastry": "点任意咖啡赠送糕点一份",
+      "bogoDessert": "甜点买一送一"
+    }
+  },
   "settings": {
     "title": "设置",
     "progress": "您的进度",
-    "reset": "清除所有打卡与预约",
+    "reset": "清除打卡、星星、奖励与预约",
     "resetConfirm": "再点一次以清除",
     "resetDone": "进度已清除"
   },

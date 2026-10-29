@@ -13,6 +13,8 @@ import type { MapLayout } from '../data/geo';
 import { HOME_RADIUS, HOTEL_SCALE, PLACE_RADIUS } from '../data/geo';
 import { useStore } from '../store';
 import { CategoryIcon } from '../ui/CategoryIcon';
+import { EarnedStar } from '../ui/EarnedStar';
+import { isRtl } from '../i18n';
 import { Island, ISLAND_TOP } from './Island';
 import { Bush, ContactAO, mats, Palm } from './props';
 import { Faisaliah, Fort, KingdomCentre, MudHouse, Museum, TuraifRuins } from './hotels';
@@ -141,6 +143,7 @@ function PlaceDiorama({ place, color }: { place: Place; color: string }) {
 function PlaceBadge({ place, visited, locked, dimmed, isFinal }: { place: Place; visited: boolean; locked: boolean; dimmed: boolean; isFinal: boolean }) {
   const { t } = useTranslation();
   const openPlace = useStore((s) => s.openPlace);
+  const lang = useStore((s) => s.lang);
   const name = t(`places.${place.id}.name`);
   const label = `${name}, ${t(`categories.${place.category}`)}${visited ? `, ${t('place.checkedIn')}` : ''}`;
   return (
@@ -148,6 +151,8 @@ function PlaceBadge({ place, visited, locked, dimmed, isFinal }: { place: Place;
       className={`badge${visited ? ' is-visited' : ''}${locked ? ' is-locked' : ''}${dimmed ? ' is-dimmed' : ''}${isFinal ? ' is-final' : ''}`}
       onClick={() => openPlace(place.id)}
       aria-label={label}
+      // The overlay layer is always LTR; mirror the check and star pair for Arabic.
+      dir={isRtl(lang) ? 'rtl' : 'ltr'}
     >
       <span className="badge-disc">
         {locked ? <Lock size={18} strokeWidth={2} /> : <CategoryIcon category={place.category} size={20} />}
@@ -165,6 +170,8 @@ function PlaceBadge({ place, visited, locked, dimmed, isFinal }: { place: Place;
           </motion.span>
         )}
       </AnimatePresence>
+      {/* initial={false}: places visited before this map opened show their star without the pop. */}
+      <AnimatePresence initial={false}>{visited && <EarnedStar key="star" />}</AnimatePresence>
       {isFinal && !visited && (
         <span className="badge-flag" aria-hidden>
           <Flag size={12} strokeWidth={2.4} />

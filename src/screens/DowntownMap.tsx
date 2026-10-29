@@ -1,10 +1,13 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useAnimate } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, Settings } from 'lucide-react';
 import { COLORS, THEMES } from '../config';
 import { FILTER_CATEGORIES, getDowntown, type Category } from '../data';
 import { useStore } from '../store';
 import { CategoryIcon } from '../ui/CategoryIcon';
+import { StarIcon } from '../ui/StarIcon';
+import { useFormat } from '../i18n';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -32,6 +35,27 @@ function FilterChips({ categories }: { categories: Category[] }) {
         </motion.button>
       ))}
     </div>
+  );
+}
+
+/** Stars earned here (one per visited place); bumps each time one is added. */
+function StarCount({ done, total }: { done: number; total: number }) {
+  const { t } = useTranslation();
+  const f = useFormat();
+  const [scope, animate] = useAnimate();
+  const prev = useRef(done);
+  useEffect(() => {
+    if (done > prev.current && scope.current) {
+      // Waits for the star to land on the map first.
+      animate(scope.current, { scale: [1, 1.35, 1] }, { duration: 0.45, delay: 0.75, ease: 'easeOut' });
+    }
+    prev.current = done;
+  }, [done, animate, scope]);
+  return (
+    <span ref={scope} className="star-count num" aria-label={t('stars.label', { count: done, total })}>
+      <StarIcon size={16} />
+      <span dir="ltr">{f.num(done)} / {f.num(total)}</span>
+    </span>
   );
 }
 
@@ -102,6 +126,7 @@ export function DowntownMap() {
                   style={{ background: COLORS.completed }}
                 />
               </div>
+              <StarCount done={done} total={total} />
             </div>
             <FilterChips categories={categories} />
           </motion.header>

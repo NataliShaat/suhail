@@ -24,6 +24,10 @@ interface State {
   placeId: string | null;
   filter: Category | null;
   visited: Record<string, number>;
+  /** Downtowns whose every main-route place is visited: id -> when. Fires the celebration once. */
+  completed: Record<string, number>;
+  /** The downtown whose reward modal is open. */
+  rewardFor: string | null;
   lastCheckIn: string | null;
   rafeeqOpen: boolean;
   guideId: string | null;
@@ -41,6 +45,8 @@ interface State {
   openPlace: (id: string | null) => void;
   setFilter: (c: Category | null) => void;
   checkIn: (id: string) => void;
+  complete: (downtownId: string) => void;
+  openReward: (downtownId: string | null) => void;
   openRafeeq: (open: boolean) => void;
   openGuide: (id: string | null) => void;
   addBooking: (b: Booking) => void;
@@ -59,6 +65,8 @@ export const useStore = create<State>()(
       placeId: null,
       filter: null,
       visited: {},
+      completed: {},
+      rewardFor: null,
       lastCheckIn: null,
       rafeeqOpen: false,
       guideId: null,
@@ -75,16 +83,18 @@ export const useStore = create<State>()(
       openPlace: (placeId) => set({ placeId }),
       setFilter: (filter) => set({ filter }),
       checkIn: (id) => set((s) => ({ visited: { ...s.visited, [id]: Date.now() }, lastCheckIn: id })),
+      complete: (id) => set((s) => ({ completed: { ...s.completed, [id]: Date.now() } })),
+      openReward: (rewardFor) => set({ rewardFor }),
       openRafeeq: (rafeeqOpen) => set({ rafeeqOpen, placeId: null, guideId: null, suhailOpen: false }),
       openGuide: (guideId) => set({ guideId }),
       addBooking: (b) => set((s) => ({ bookings: [...s.bookings, b] })),
       openSettings: (settingsOpen) => set({ settingsOpen }),
       openSuhail: (suhailOpen) => set({ suhailOpen, placeId: null }),
-      resetProgress: () => set({ visited: {}, bookings: [], lastCheckIn: null }),
+      resetProgress: () => set({ visited: {}, completed: {}, rewardFor: null, bookings: [], lastCheckIn: null }),
     }),
     {
       name: 'downtowns-v2',
-      partialize: (s) => ({ lang: s.lang, visited: s.visited, bookings: s.bookings }),
+      partialize: (s) => ({ lang: s.lang, visited: s.visited, completed: s.completed, bookings: s.bookings }),
     },
   ),
 );
@@ -99,7 +109,7 @@ export function applyDeepLink() {
   const s = useStore.getState();
   const patch: Partial<State> = {};
   const lang = q.get('lang');
-  if (q.get('fresh') === '1') Object.assign(patch, { lang: 'en', visited: {}, bookings: [] });
+  if (q.get('fresh') === '1') Object.assign(patch, { lang: 'en', visited: {}, completed: {}, bookings: [] });
   if (lang === 'ar' || lang === 'en' || lang === 'zh-CN') patch.lang = lang;
   const visited = q.get('visited');
   if (visited !== null) {
