@@ -15,6 +15,7 @@ import { LangBar } from './ui/LangBar';
 import { GuideFab } from './screens/GuideFab';
 import { SuhailChat } from './screens/SuhailChat';
 import { InstallBanner } from './ui/InstallBanner';
+import { Celebration } from './screens/Celebration';
 import { getDowntown } from './data';
 import { THEMES } from './config';
 
@@ -50,6 +51,7 @@ export function App() {
               <SuhailChat />
             </div>
           </LayoutGroup>
+          <Celebration />
           {/* Outside the ui layer, so it stays put while the text around it crossfades. */}
           <LangBar />
         </div>

@@ -3,6 +3,7 @@
   "downtowns": [
     {
       "id": "ramada",
+      "reward": { "code": "SUH-OLDRIYADH-15", "percent": 15 },
       "theme": "oldcity",
       "hotel": { "lat": 24.66025, "lng": 46.70037, "kind": "ramada", "model": null },
       "route": ["illume", "al-taif-kitchens", "marthad", "al-afrah", "national-museum", "murabba-palace", "darah", "masmak"],
@@ -63,6 +64,7 @@
     },
     {
       "id": "bab-samhan",
+      "reward": { "code": "SUH-DIRIYAH-15", "percent": 15 },
       "theme": "heritage",
       "hotel": { "lat": 24.73988, "lng": 46.57228, "kind": "babsamhan", "model": null },
       "route": ["bygone-years", "bujairi-terrace", "maiz", "cova", "turaif-viewpoint", "diriyah-museum", "at-turaif"],
@@ -141,6 +143,7 @@
     },
     {
       "id": "comfort-olaya",
+      "reward": { "code": "SUH-OLAYA-15", "percent": 15 },
       "theme": "modern",
       "hotel": { "lat": 24.70695, "lng": 46.67713, "kind": "comfort", "model": null },
       "route": ["morfi", "goat", "al-faisaliah", "the-gate", "mamlaka-social", "the-roof", "sky-bridge"],

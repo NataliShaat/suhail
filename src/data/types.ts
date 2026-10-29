@@ -33,6 +33,8 @@ export interface Downtown {
   id: string;
   theme: ThemeId;
   hotel: { lat: number; lng: number; kind: HotelKind; model: string | null };
+  /** The hotel discount for visiting every place on the main route. */
+  reward: { code: string; percent: number };
   route: string[];
   places: Place[];
   bonus?: {

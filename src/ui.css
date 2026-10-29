@@ -1124,3 +1124,105 @@
   .star-fab-glow, .star-fab-icon, .star-fab-spark, .typing span { animation: none !important; }
   .star-fab-spark { opacity: 0; }
 }
+
+/* ---------- Downtown complete: confetti and the reward card ---------- */
+.confetti-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 62;
+  pointer-events: none;
+}
+.reward-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px var(--gutter);
+}
+.reward-scrim { position: absolute; inset: 0; background: rgba(10, 9, 26, 0.62); }
+.reward-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 28px 20px 20px;
+  border-radius: var(--r-sheet);
+  background: var(--sand);
+  color: var(--night);
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(5, 4, 16, 0.5);
+}
+.reward-card:focus { outline: none; }
+.reward-close { position: absolute; top: 12px; inset-inline-end: 12px; }
+.reward-hero {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #2A2852 0%, var(--night) 70%);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--district) 30%, transparent), 0 10px 30px rgba(227, 168, 60, 0.35);
+}
+.reward-hero-star { display: grid; filter: drop-shadow(0 0 10px rgba(227, 168, 60, 0.7)); }
+.reward-title { font-size: var(--fs-xl); line-height: var(--lh-tight); font-weight: 700; letter-spacing: -0.02em; }
+:lang(ar) .reward-title, :lang(zh-CN) .reward-title { letter-spacing: 0; }
+.reward-sub { margin-top: 6px; color: var(--stone); font-size: var(--fs-s); }
+.reward-label { margin-top: 18px; font-size: var(--fs-xs); font-weight: 600; color: var(--stone); text-transform: uppercase; letter-spacing: 0.06em; }
+:lang(ar) .reward-label, :lang(zh-CN) .reward-label { text-transform: none; letter-spacing: 0; }
+.reward-stars { margin-top: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.reward-stars > span { display: grid; filter: drop-shadow(0 1px 2px rgba(201, 143, 37, 0.45)); }
+.reward-offer {
+  margin: 18px 0 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--night);
+  color: #FBE3A6;
+  font-weight: 600;
+  font-size: var(--fs-s);
+  line-height: 1.35;
+}
+.reward-done { margin-top: 14px; }
+
+/* ---------- Ticket: a dashed box with a code and a copy button ---------- */
+.ticket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline: 14px 10px;
+  border: 2px dashed var(--gold);
+  border-radius: 16px;
+  background: var(--sand-raised);
+  text-align: start;
+}
+.ticket-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ticket-label { font-size: var(--fs-xs); color: var(--stone); font-weight: 600; }
+.ticket-code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--night);
+  overflow-wrap: anywhere;
+}
+:lang(ar) .ticket-code { text-align: end; }
+.ticket-copy {
+  flex: none;
+  min-height: 40px;
+  min-width: 96px;
+  padding-inline: 12px;
+  border-radius: var(--pill);
+  background: var(--night);
+  color: var(--white);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  transition: background-color 160ms, transform 160ms var(--ease-out);
+}
+.ticket-copy:active { transform: scale(0.95); }
+.ticket-copy.is-copied { background: var(--done-dark); }
+.ticket-copy-inner { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
