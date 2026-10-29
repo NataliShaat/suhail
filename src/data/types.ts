@@ -4,6 +4,8 @@ import type { Hours } from './hours.js';
 
 export type Category = 'heritage' | 'food' | 'coffee' | 'music' | 'landmark' | 'metro';
 
+export type VoucherOffer = 'pct10' | 'pct15' | 'saudiCoffee' | 'pastry' | 'bogoDessert';
+
 export interface Place {
   id: string;
   category: Exclude<Category, 'metro'>;
@@ -14,6 +16,8 @@ export interface Place {
   evening?: boolean;
   alsoCoffee?: boolean;
   hours: Hours;
+  /** A café or restaurant offer, unlocked by checking in. `offer` keys i18n `voucher.offers`. */
+  voucher?: { offer: VoucherOffer; code: string };
   /** Short facts in English, for the assistant. */
   highlights: string[];
   /** Fields that hold prototype sample values (see the note in downtowns.json). */

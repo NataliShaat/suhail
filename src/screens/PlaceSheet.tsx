@@ -9,6 +9,8 @@ import { useFormat } from '../i18n';
 import { useStore } from '../store';
 import { CategoryIcon } from '../ui/CategoryIcon';
 import { Sheet } from '../ui/Sheet';
+import { CopyCode } from '../ui/CopyCode';
+import type { Place } from '../data';
 
 function Fact({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -16,6 +18,46 @@ function Fact({ icon, children }: { icon: React.ReactNode; children: React.React
       <span className="fact-icon">{icon}</span>
       <span>{children}</span>
     </li>
+  );
+}
+
+/** A place's café or restaurant offer: locked until check-in, then a ticket with the code. */
+function VoucherCard({ voucher, unlocked }: { voucher: NonNullable<Place['voucher']>; unlocked: boolean }) {
+  const { t } = useTranslation();
+  return (
+    <div className="voucher">
+      <AnimatePresence mode="wait" initial={false}>
+        {unlocked ? (
+          <motion.div
+            key="open"
+            className="voucher-card is-open"
+            initial={{ opacity: 0, scale: 0.92, rotateX: -50 }}
+            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 22, delay: 0.25 }}
+          >
+            <p className="voucher-head">
+              <span className="voucher-icon"><Ticket size={16} strokeWidth={2.4} aria-hidden /></span>
+              <span>{t('voucher.unlocked')}</span>
+            </p>
+            <p className="voucher-offer">{t(`voucher.offers.${voucher.offer}`)}</p>
+            <CopyCode code={voucher.code} label={t('voucher.codeLabel')} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="locked"
+            className="voucher-card is-locked"
+            exit={{ opacity: 0, scale: 0.94, filter: 'blur(4px)', transition: { duration: 0.22 } }}
+          >
+            <p className="voucher-head">
+              <span className="voucher-icon"><Lock size={15} strokeWidth={2.4} aria-hidden /></span>
+              <span>{t('voucher.title')}</span>
+            </p>
+            <p className="voucher-offer">{t(`voucher.offers.${voucher.offer}`)}</p>
+            <p className="voucher-hint">{t('voucher.locked')}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -94,6 +136,8 @@ export function PlaceSheet() {
             {place?.free && <Fact icon={<Ticket size={18} strokeWidth={2} aria-hidden />}>{t('place.freeEntry')}</Fact>}
           </ul>
 
+          {place?.voucher && !locked && <VoucherCard voucher={place.voucher} unlocked={!!done} />}
+
           {place && locked && (
             <div className="locked-box">
               <p>
@@ -133,7 +177,8 @@ export function PlaceSheet() {
                   className="btn-primary"
                   onClick={() => {
                     checkIn(placeId);
-                    window.setTimeout(() => openPlace(null), 1100);
+                    // Stay open on voucher places so the unlocked code can be shown and copied.
+                    if (!place.voucher) window.setTimeout(() => openPlace(null), 1100);
                   }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   data-autofocus

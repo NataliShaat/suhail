@@ -1226,3 +1226,31 @@
 .ticket-copy:active { transform: scale(0.95); }
 .ticket-copy.is-copied { background: var(--done-dark); }
 .ticket-copy-inner { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+
+/* ---------- Voucher card in the place sheet ---------- */
+.voucher { margin: -6px 0 16px; perspective: 600px; }
+.voucher-card { padding: 14px; border-radius: 18px; }
+.voucher-card.is-locked { background: var(--sand-raised); border: 2px dashed var(--sand-step); }
+.voucher-card.is-open { background: var(--night); color: var(--white); transform-origin: 50% 0; }
+.voucher-head { display: flex; align-items: center; gap: 8px; font-size: var(--fs-xs); font-weight: 700; color: var(--stone); }
+.voucher-card.is-open .voucher-head { color: #FBE3A6; }
+.voucher-icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--sand-step); color: var(--stone); }
+.voucher-card.is-open .voucher-icon { background: var(--gold); color: var(--night); }
+.voucher-offer { margin-top: 8px; font-size: var(--fs-m); font-weight: 700; color: var(--night); }
+.voucher-card.is-open .voucher-offer { color: var(--white); margin-bottom: 12px; }
+.voucher-hint { margin-top: 4px; font-size: var(--fs-s); color: var(--stone); }
+
+/* A small ticket on map badges of places with a voucher */
+.badge-voucher {
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--night);
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--night);
+}

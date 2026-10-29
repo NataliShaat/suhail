@@ -40,18 +40,21 @@
         },
         {
           "id": "al-taif-kitchens", "category": "food", "lat": 24.66838, "lng": 46.70917,
+          "voucher": { "offer": "pct10", "code": "SUH-OLDRIYADH-TAIF-10" },
           "hours": { "open": "11:00", "close": "01:00" },
           "highlights": ["Lamb and chicken mandi from the pit oven", "Family seating on floor cushions", "Generous shared platters"],
           "prototype": ["hours", "highlights"]
         },
         {
           "id": "marthad", "category": "coffee", "lat": 24.65998, "lng": 46.70431,
+          "voucher": { "offer": "saudiCoffee", "code": "SUH-OLDRIYADH-MARTHAD-QAHWA" },
           "hours": { "open": "06:00", "close": "00:00" },
           "highlights": ["Single-origin pour-overs", "Saudi coffee with dates", "Five minutes on foot from the hotel"],
           "prototype": ["hours", "highlights"]
         },
         {
           "id": "illume", "category": "coffee", "lat": 24.66764, "lng": 46.70134,
+          "voucher": { "offer": "pastry", "code": "SUH-OLDRIYADH-ILLUME-PASTRY" },
           "hours": { "open": "07:00", "close": "01:00" },
           "highlights": ["Beans roasted on site", "Bright room for working", "Pastries baked each morning"],
           "prototype": ["hours", "highlights"]
@@ -77,6 +80,7 @@
         },
         {
           "id": "bujairi-terrace", "category": "food", "lat": 24.73732, "lng": 46.57480,
+          "voucher": { "offer": "pct10", "code": "SUH-DIRIYAH-BUJAIRI-10" },
           "hours": { "open": "08:00", "close": "00:00", "days": { "4": ["08:00", "01:00"], "5": ["08:00", "01:00"] } },
           "highlights": ["Terrace tables facing At-Turaif", "Around twenty restaurants and cafés", "Best at sunset, when the walls light up"],
           "prototype": ["hours", "highlights"]
@@ -101,12 +105,14 @@
         },
         {
           "id": "maiz", "category": "food", "lat": 24.73681, "lng": 46.57413,
+          "voucher": { "offer": "pct15", "code": "SUH-DIRIYAH-MAIZ-15" },
           "hours": { "open": "13:00", "close": "00:00" },
           "highlights": ["Modern Saudi tasting menu", "Jareesh and kabsa, reimagined", "Book ahead for a terrace table"],
           "prototype": ["hours", "highlights"]
         },
         {
           "id": "cova", "category": "coffee", "lat": 24.73656, "lng": 46.57532,
+          "voucher": { "offer": "bogoDessert", "code": "SUH-DIRIYAH-COVA-B1G1" },
           "hours": { "open": "08:00", "close": "00:00" },
           "highlights": ["Milanese pastries and panettone", "Espresso at the counter", "A pause between Bujairi and At-Turaif"],
           "prototype": ["hours", "highlights"]
@@ -156,12 +162,14 @@
         },
         {
           "id": "mamlaka-social", "category": "food", "lat": 24.71148, "lng": 46.67447,
+          "voucher": { "offer": "pct10", "code": "SUH-OLAYA-MAMLAKA-10" },
           "hours": { "open": "12:00", "close": "01:00" },
           "highlights": ["Many kitchens under one roof", "Saudi, Asian and Italian counters", "Good for groups who can't agree"],
           "prototype": ["hours", "highlights"]
         },
         {
           "id": "the-roof", "category": "food", "lat": 24.71140, "lng": 46.67443,
+          "voucher": { "offer": "pct15", "code": "SUH-OLAYA-ROOF-15" },
           "hours": { "open": "17:00", "close": "01:00" },
           "highlights": ["Open-air dining on the roof", "Grills and mezze", "Skyline views at dinner"],
           "prototype": ["hours", "highlights"]
@@ -180,6 +188,7 @@
         },
         {
           "id": "goat", "category": "coffee", "lat": 24.70761, "lng": 46.67876,
+          "voucher": { "offer": "bogoDessert", "code": "SUH-OLAYA-GOAT-B1G1" },
           "hours": { "open": "07:00", "close": "00:00" },
           "highlights": ["Signature desserts by Reeham", "Small, design-led room", "Two minutes from the hotel"],
           "prototype": ["hours", "highlights"]

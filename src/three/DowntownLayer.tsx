@@ -4,7 +4,7 @@ import { htmlPortal } from './htmlPortal';
 import { Html, Line } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Car, Check, Flag, Lock, TramFront } from 'lucide-react';
+import { Car, Check, Flag, Lock, Ticket, TramFront } from 'lucide-react';
 import { Group, Mesh, MeshBasicMaterial, QuadraticBezierCurve3, Vector3 } from 'three';
 import type { Line2 } from 'three-stdlib';
 import { COLORS, FLY_DURATION, THEMES } from '../config';
@@ -145,7 +145,7 @@ function PlaceBadge({ place, visited, locked, dimmed, isFinal }: { place: Place;
   const openPlace = useStore((s) => s.openPlace);
   const lang = useStore((s) => s.lang);
   const name = t(`places.${place.id}.name`);
-  const label = `${name}, ${t(`categories.${place.category}`)}${visited ? `, ${t('place.checkedIn')}` : ''}`;
+  const label = `${name}, ${t(`categories.${place.category}`)}${place.voucher ? `, ${t('voucher.badge')}` : ''}${visited ? `, ${t('place.checkedIn')}` : ''}`;
   return (
     <button
       className={`badge${visited ? ' is-visited' : ''}${locked ? ' is-locked' : ''}${dimmed ? ' is-dimmed' : ''}${isFinal ? ' is-final' : ''}`}
@@ -172,6 +172,11 @@ function PlaceBadge({ place, visited, locked, dimmed, isFinal }: { place: Place;
       </AnimatePresence>
       {/* initial={false}: places visited before this map opened show their star without the pop. */}
       <AnimatePresence initial={false}>{visited && <EarnedStar key="star" />}</AnimatePresence>
+      {place.voucher && !locked && (
+        <span className="badge-voucher" aria-hidden>
+          <Ticket size={11} strokeWidth={2.6} />
+        </span>
+      )}
       {isFinal && !visited && (
         <span className="badge-flag" aria-hidden>
           <Flag size={12} strokeWidth={2.4} />
